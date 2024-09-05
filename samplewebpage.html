@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Parts Layout</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .part {
+            box-sizing: border-box;
+            padding: 10px;
+            border: 1px solid black;
+            text-align: center;
+            background-color: antiquewhite;
+            overflow: auto; /* Enable scrolling */
+            height: 50vh; /* Fixed height for each part */
+        }
+        .form {
+            margin-top: 30px;
+        }
+        .form_group {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        .b {
+            margin-top: 20px;
+        }
+        .part a {
+            margin-top: 20px;
+        }
+        .part dt {
+            text-align: left;
+            color:rgb(red, green, rgb(25, 194, 39)) ;
+        }
+        .part dd {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="part">
+            <h2>ABOUT SASTRA</h2>
+            <p>SASTRA (Shanmugha Arts, Science, Technology & Research Academy) University, located in Thanjavur, Tamil Nadu, India, is a renowned institution known for its academic excellence, innovative research, and comprehensive educational programs. Established in 1984, SASTRA has grown to become a prominent player in the fields of engineering, science, management, law, and humanities. The university offers a diverse range of undergraduate, postgraduate, and doctoral programs, attracting students from across the country and abroad. SASTRA is committed to fostering a stimulating learning environment with state-of-the-art facilities, experienced faculty, and a strong emphasis on research and development. The institution also places a high value on industry collaboration and practical exposure, ensuring that its graduates are well-prepared to meet the challenges of the global workforce.</p>
+            <img src="/sastra.jpeg" alt="sastra">
+        </div>
+        <div class="part">
+            <h2>HYPERLINK</h2>
+            <div class="linklist">
+                <ul>
+                    <li><a class="a" href="https://www.sastra.edu/">Sastra HomePage</a></li>
+                    <li><a class="a" href="https://in.search.yahoo.com/search?fr=mcafee&type=E211IN885G0&p=sastra+swi">Sastra Students Webfare Interface</a></li>
+                    <li><a class="a" href="https://www.sastra.edu/academics/faculty.html">Sastra Faculty Lists</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="part">
+            <h2>LOGIN PAGE</h2>
+            <form class="form" action="/s.html">
+                <div class="form_group">
+                    <label for="name">USERNAME : </label>
+                    <input type="text" name="" id="">
+                </div>
+                <div class="form_group">
+                    <label class="pass">PASSWORD : </label>
+                    <input type="password" name="" id="">
+                </div>
+                <button class="b" type="submit">LOGIN</button>
+            </form>
+        </div>
+        <div class="part">
+            <h2>DETAILS</h2>
+            <dl>
+                <b><dt>PROGRAMS OFFERED :</dt></b>
+                <dd>SASTRA offers a wide range of programs including undergraduate, postgraduate, and doctoral degrees in fields such as engineering, science, management, law, humanities, and education.</dd>
+                <b><dt>FACULTY :</dt></b>
+                <dd>Faculty: The university boasts highly qualified and experienced faculty members who are dedicated to providing quality education and fostering a culture of research and innovation.</dd>
+                <b><dt>RESEARCH:</dt></b>
+                <dd>SASTRA places a strong emphasis on research and development, with numerous research centers and labs focusing on various disciplines. The university encourages faculty and students to engage in cutting-edge research projects.</dd>
+            </dl>
+        </div>
+    </div>
+</body>
+</html>

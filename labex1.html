@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab Exercise</title>
+    <style>
+        body, html {
+            height: 100%;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh; 
+            background-color: rgb(0, 0, 0);
+            display:grid;
+            grid-template-columns: repeat(2,1fr);
+            gap:5px;
+        }
+        .part {
+            box-sizing: border-box; 
+            padding: 20px;
+            text-align: left;
+            background-color: rgb(255, 255, 255);
+        }
+        
+        .form
+        {
+            margin: top 30px;
+        }
+        .form_group
+        {
+            display:flex;
+            margin-bottom: 20px;
+        }
+        .b
+        {
+            margin-top: 20px;
+        }
+        .part a
+        {
+            margin-top: 20px;
+        }
+        .part dt{
+            text-align: left;
+        }
+        .part dd{
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="part"><b><i>ABOUT THE UNIVERSITY</i></b>
+          <p>SASTRA (Shanmugha Arts, Science, Technology & Research Academy) University, located in Thanjavur, Tamil Nadu, India, is a renowned institution known for its academic excellence, innovative research, and comprehensive educational programs. Established in 1984, SASTRA has grown to become a prominent player in the fields of engineering, science, management, law, and humanities. SASTRA is committed to fostering a stimulating learning environment with state-of-the-art facilities, experienced faculty, and a strong emphasis on research and development.
+          </p>  
+        </div>
+
+        <div class="part"><b><i>Links</i></b> <br>
+            <ul>
+               <li><a class ="a" href="https://www.sastra.edu/">SASTRA UNIVERSITY WEBSITE</a></li>
+               <li><a class ="a" href="https://in.search.yahoo.com/search?fr=mcafee&type=E211IN885G0&p=sastra+swi">student website</a></li>
+               <li><a class ="a" href="https://www.sastra.edu/academics/faculty.html">FFACULTY LIST</a></li>
+            </ul>
+           
+        </div>
+
+        <div class="part"> <b><i>LOGIN PAGE</i></b><br>
+            <form class="form" action="/s.html">
+                <form class = "form_group">
+                    <label for="name"><b>Username : </b></label>
+                    <input type="text"> 
+                </form>
+                <form class="form_group"></form>
+                    <label class="pass"><b>Password : </b></label>
+                    <input type="password"> <br>
+                </form>
+                <button class="b" type="submit"><b>Login</b> </button>
+                </form>
+            </form>
+        </div>
+        <div class="part"> <b><i>INSIDE THE CAMPUS</i></b> 
+            <dl>
+                <b><dt >PROGRAMS  : </dt></b>
+                    <dd>SASTRA offers a wide range of programs including undergraduate, postgraduate, and doctoral degrees in fields such as engineering, science, management, law, humanities, and education.</dd>
+
+                <b><dt >FACULTY : </dt></b>
+                    <dd>The university boasts highly qualified and experienced faculty members who are dedicated to providing quality education and fostering a culture of research and innovation.</dd>
+                
+                <b><dt >RESEARCH: </dt></b>
+                    <dd>SASTRA places a strong emphasis on research and development, with numerous research centers and labs focusing on various disciplines. The university encourages faculty and students to engage in cutting-edge research projects.</dd>
+            </dl>
+        </div>
+
+
+
+    </div>
+</body>
+</html>

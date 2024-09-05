@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management System</title>
+    <style>
+        #transaction-form {
+            display: none;
+            background-color: #f0f8ff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+        }
+        #customer-table, #transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #f9f9f9;
+        }
+        #customer-table th, #transactions-table th, #customer-table td, #transactions-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        #customer-table th, #transactions-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center;">Bank Management System</h1>
+    
+    <!-- Account Information -->
+    <div id="account-info">
+        <h2>Account Balance: $<span id="balance">1000</span></h2>
+        <button id="add-transaction-btn">Add Transaction</button>
+        <button onclick="accrueInterest(2)">Accrue 2% Interest</button>
+    </div>
+
+    <!-- Transaction Form -->
+    <div id="transaction-form">
+        <label for="transaction-type">Transaction Type:</label>
+        <select id="transaction-type">
+            <option value="deposit">Deposit</option>
+            <option value="withdrawal">Withdrawal</option>
+        </select>
+        <br><br>
+        <label for="transaction-amount">Amount:</label>
+        <input type="number" id="transaction-amount" step="0.01">
+        <br><br>
+        <button id="save-transaction-btn">Save Transaction</button>
+    </div>
+
+    <!-- Transactions Table -->
+    <table id="transactions-table">
+        <thead>
+            <tr>
+                <th>Transaction Type</th>
+                <th>Amount</th>
+                <th>Total Balance</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody id="transactions-body">
+            <!-- Transaction rows will be added dynamically -->
+        </tbody>
+    </table>
+
+    <!-- Customer Account Management -->
+    <h2>Customer Accounts</h2>
+    <table id="customer-table">
+        <thead>
+            <tr>
+                <th>Customer</th>
+                <th>Status</th>
+                <th>Due Amount</th>
+                <th>Account Type</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="customer1" data-status="active" data-due="50">
+                <td>Customer 1</td>
+                <td class="status">Active</td>
+                <td class="due">50</td>
+                <td class="account-type">Savings</td>
+                <td><button onclick="changeAccountType('customer1', 'Checking')">Change to Checking</button></td>
+            </tr>
+            <!-- More customers can be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        let transactionIdCounter = 1;
+
+        // References to HTML elements
+        const addTransactionBtn = document.getElementById('add-transaction-btn');
+        const saveTransactionBtn = document.getElementById('save-transaction-btn');
+        const transactionForm = document.getElementById('transaction-form');
+        const transactionTypeSelect = document.getElementById('transaction-type');
+        const transactionAmountInput = document.getElementById('transaction-amount');
+        const transactionsBody = document.getElementById('transactions-body');
+        const balanceElement = document.getElementById('balance');
+
+        // Event listeners
+        addTransactionBtn.addEventListener('click', function() {
+            transactionForm.style.display = 'block';
+        });
+
+        saveTransactionBtn.addEventListener('click', function() {
+            const transactionType = transactionTypeSelect.value;
+            const amount = parseFloat(transactionAmountInput.value);
+            if (isNaN(amount) || amount <= 0) {
+                alert("Please enter a valid amount");
+                return;
+            }
+
+            addTransaction(transactionType, amount);
+        });
+
+        function addTransaction(type, amount) {
+            const currentBalance = parseFloat(balanceElement.textContent);
+            const newBalance = type === 'deposit' ? currentBalance + amount : currentBalance - amount;
+            balanceElement.textContent = newBalance.toFixed(2);
+
+            const row = document.createElement('tr');
+            row.id = 'transaction-' + transactionIdCounter++;
+            row.innerHTML = `
+                <td>${type}</td>
+                <td>$${amount.toFixed(2)}</td>
+                <td>$${newBalance.toFixed(2)}</td>
+                <td><button onclick="removeTransaction('${row.id}')">Remove</button></td>
+            `;
+            transactionsBody.appendChild(row);
+
+            transactionForm.style.display = 'none';
+            transactionAmountInput.value = '';
+        }
+
+        function removeTransaction(transactionId) {
+            const transactionRow = document.getElementById(transactionId);
+            if (transactionRow) {
+                const amount = parseFloat(transactionRow.cells[1].textContent.substring(1));
+                const type = transactionRow.cells[0].textContent;
+                const currentBalance = parseFloat(balanceElement.textContent);
+
+                const newBalance = type === 'deposit' ? currentBalance - amount : currentBalance + amount;
+                balanceElement.textContent = newBalance.toFixed(2);
+
+                transactionRow.remove();
+            } else {
+                alert("Transaction not found");
+            }
+        }
+
+        function accrueInterest(rate) {
+            const currentBalance = parseFloat(balanceElement.textContent);
+            const newBalance = currentBalance + (currentBalance * rate / 100);
+            balanceElement.textContent = newBalance.toFixed(2);
+        }
+
+        function changeAccountType(customerId, newType) {
+            const customerRow = document.getElementById(customerId);
+            if (customerRow) {
+                customerRow.querySelector('.account-type').textContent = newType;
+                customerRow.setAttribute('data-type', newType.toLowerCase());
+            } else {
+                alert('Customer account not found.');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initial setup or other event listeners
+        });
+    </script>
+</body>
+</html>

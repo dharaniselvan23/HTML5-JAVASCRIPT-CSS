@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Form Details</title>
+</head>
+<script>
+    function validateForm(){
+        var name=document.getElementById('name').value;
+        var password=document.getElementById('password').value;
+        var phone=document.getElementById('phone').value;
+        if(name==null || name==""){
+            alert("Name can't be blank");
+            return false;
+        }
+        else if(phone.length!=10){
+            alert("Invalid phone number");
+            return false;
+        }
+        else if(password.length<6){
+            alert("Password must be atleast 6 characters long");
+            return false;
+        }
+    }
+</script>
+<body>
+    <h1>Java script validation</h1>
+    <form name="details" id="details" action="home.html" method="post" onsubmit="return validateForm()">
+        <table name="data">
+            <tr>
+                <td><label for="name">Name: </label></td>
+                <td><input id="name" type="text" required></td>
+            </tr>
+            <tr>
+                <td><label for="email">Email: </label></td>
+                <td><input id="email" type="email" required></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Phone: </label></td>
+                <td><input id="phone" type="number" required></td>
+            </tr>
+            <tr>
+                <td><label for="password">Password: </label></td>
+                <td><input id="password" type="password" required></td>
+            </tr>
+            <tr>
+               <td><label for="gender">Gender: </label></td>
+               <td><input id="gender" name="gender" type="radio" value="male">Male 
+                <input id="gender" name="gender" type="radio" value="female">Female</td>
+            </tr>
+            <tr>
+                <td><label for="hobbies">Hobbies: </label></td>
+                <td><input id="hobbies" type="checkbox" value="reading">Reading
+                <input id="hobbies" type="checkbox" value="traveling">Traveling
+                <input id="hobbies" type="checkbox" value="gaming">Gaming</td>
+             </tr>
+             <tr>
+                 <td><label for="country">Country: </label></td>
+                 <td>
+                     <select id="country" required>
+                         <option value="" disabled selected>Select a country</option>
+                         <option value="1">India</option>
+                         <option value="2">China</option>
+                         <option value="3">Russia</option>
+                     </select>
+                </td>
+             </tr>
+             <tr>
+                 <td><label for="comments">Comments: </label></td>
+                 <td>
+                     <textarea id="comments" rows="5" cols="35" placeholder="Enter your comments...." required></textarea>
+                 </td>
+             </tr>
+        </table>
+        <input id="submit" type="submit" value="Submit">
+    </form>
+</body>
+</html>

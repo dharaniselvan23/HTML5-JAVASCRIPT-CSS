@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Information Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            height: 100vh;
+            text-align: center;
+            justify-content: center;
+        }
+        .section {
+            padding: 20px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+            
+        }
+        .login {
+            display: flex;
+            flex-direction: column;
+            max-width: 300px;
+            margin: auto;
+        }
+        .login input {
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .login button {
+            padding: 10px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="section" id="college-details" style="grid-column: 1 / 2; grid-row: 1 / 2;">
+            <h2>About Our College</h2>
+            <p>Details about the college.</p>
+        </div>
+        <div class="section" id="college-links" style="grid-column: 2 / 3; grid-row: 1 / 2;">
+            <h2>Useful Links</h2>
+            <ul>
+                <li><a href="http://www.collegewebsite.com">College Website</a></li>
+                <li><a href="http://www.collegewebsite.com/admissions">Admissions</a></li>
+                <li><a href="http://www.collegewebsite.com/contact">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="section" id="login" style="grid-column: 1 / 2; grid-row: 2 / 3;">
+            <h2>Login</h2>
+            <div class="login">
+                <input type="text" id="username" name="username" placeholder="Username">
+                <input type="password" id="password" name="password" placeholder="Password">
+                <button type="submit">Login</button>
+            </div>
+        </div>
+        <div class="section" id="programs-faculties" style="grid-column: 2 / 3; grid-row: 2 / 3;">
+            <h2>Programs and Faculties</h2>
+            <p>Information about programs and faculties.</p>
+        </div>
+    </div>
+</body>
+</html>
